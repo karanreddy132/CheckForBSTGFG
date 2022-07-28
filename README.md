@@ -7,20 +7,20 @@ bool isBST(Node* root)
         }
         //minimum value of right subtree should be greater than current node value
         else if(root->left==nullptr){
-            if(root->data >= root->right->data || minNode(root->right)->data <= root->data)
+            if(minNode(root->right)->data <= root->data)
                 return false;
             else
                 return isBST(root->right);
         }
         //maximum value of left subtree should be less than current node value
         else if(root->right==nullptr){
-            if(root->data <= root->left->data || maxNode(root->left)->data >= root->data)
+            if(maxNode(root->left)->data >= root->data)
                 return false;
             else
                 return isBST(root->left);
         }
         else{
-            if(root->data >= root->right->data || minNode(root->right)->data <= root->data || root->data <= root->left->data || maxNode(root->left)->data >= root->data)
+            if(minNode(root->right)->data <= root->data || maxNode(root->left)->data >= root->data)
                 return false;
             else
                 return (isBST(root->left) && isBST(root->right));
